@@ -1,18 +1,39 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppComponent } from './app.component';
-import { FooterComponent } from './footer/footer.component';
+import {AppComponent} from './app.component';
+import {FooterComponent} from './footer/footer.component';
+import {StepperContainerComponent} from './stepper-container/stepper-container.component';
+
+import {MatStepperModule, MatInputModule, MatFormFieldModule, MatIconModule, MatTabsModule} from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { WorkoutFormComponent } from './workout-form/workout-form.component';
+
+const materialImports = [
+  MatStepperModule,
+  BrowserAnimationsModule,
+  FormsModule,
+  ReactiveFormsModule,
+  MatInputModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatTabsModule
+];
 
 @NgModule({
   declarations: [
     AppComponent,
-    FooterComponent
+    FooterComponent,
+    StepperContainerComponent,
+    WorkoutFormComponent
   ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'serverApp' })
+    BrowserModule.withServerTransition({appId: 'serverApp'}),
+    materialImports
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

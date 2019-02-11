@@ -1,0 +1,21 @@
+<mat-horizontal-stepper linear #stepper>
+  <mat-step label="Run"> <!--[stepControl]="runForm"-->
+    <app-workout-form></app-workout-form>
+    <div>
+      <button mat-button matStepperNext>Next</button>
+    </div>
+  </mat-step>
+  <mat-step label="Bike">
+    <app-workout-form></app-workout-form>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button matStepperNext>Next</button>
+    </div>
+  </mat-step>
+  <mat-step label="Done">
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>
