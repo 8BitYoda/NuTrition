@@ -10,7 +10,7 @@ import { FooterComponent } from './footer/footer.component';
     FooterComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule.withServerTransition({ appId: 'serverApp' })
   ],
   providers: [],
   bootstrap: [AppComponent]
