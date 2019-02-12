@@ -1,0 +1,6 @@
+<mat-tab-group>
+  <mat-tab *ngFor="let tab of tabs" label="Workout {{tab.id}}">
+    <app-workout-form [(data)]="tab"></app-workout-form>
+    Oz Lost/Hr - {{tab.data.ozLossHr}}
+  </mat-tab>
+</mat-tab-group>
