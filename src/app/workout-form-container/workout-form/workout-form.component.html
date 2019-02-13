@@ -1,43 +1,42 @@
-<form> <!--  [formGroup]="runForm" -->
+<form (ngSubmit)="saveWorkout()" [formGroup]="workoutForm"> <!--  [formGroup]="runForm" -->
   <mat-form-field>
     <mat-label>Starting Weight</mat-label>
-    <input matInput type="number" placeholder="" [formControl]="sWeight" required>
+    <input matInput type="number" placeholder="" formControlName="sWeight" required>
     <span matSuffix>(lbs)</span>
-    <mat-error *ngIf="sWeight.invalid">{{getErrorMessage(sWeight)}}</mat-error>
+    <mat-error *ngIf="workoutForm.get('sWeight').invalid">{{getErrorMessage('sWeight')}}</mat-error>
   </mat-form-field>
   <br/>
 
   <mat-form-field>
     <mat-label>End Weight</mat-label>
-    <input matInput type="number" placeholder="" [formControl]="eWeight" required>
+    <input matInput type="number" placeholder="" formControlName="eWeight" required>
     <span matSuffix>(lbs)</span>
-    <mat-error *ngIf="eWeight.invalid">{{getErrorMessage(eWeight)}}</mat-error>
+    <mat-error *ngIf="workoutForm.get('eWeight').invalid">{{getErrorMessage('eWeight')}}</mat-error>
   </mat-form-field>
   <br/>
 
   <mat-form-field>
     <mat-label># of Bottles Consumed</mat-label>
-    <input matInput type="number" placeholder="" [formControl]="btlsConsumed" required>
-    <mat-error *ngIf="btlsConsumed.invalid">{{getErrorMessage(btlsConsumed)}}</mat-error>
+    <input matInput type="number" placeholder="" formControlName="btlsConsumed" required>
+    <mat-error *ngIf="workoutForm.get('btlsConsumed').invalid">{{getErrorMessage('btlsConsumed')}}</mat-error>
   </mat-form-field>
   <br/>
 
   <mat-form-field>
     <mat-label>Bottle Size</mat-label>
-    <input matInput type="number" placeholder="" [formControl]="btlSize" required>
+    <input matInput type="number" placeholder="" formControlName="btlSize" required>
     <span matSuffix>(oz)</span>
-    <mat-error *ngIf="btlSize.invalid">{{getErrorMessage(btlSize)}}</mat-error>
+    <mat-error *ngIf="workoutForm.get('btlSize').invalid">{{getErrorMessage('btlSize')}}</mat-error>
   </mat-form-field>
   <br/>
 
   <mat-form-field>
     <mat-label>Length of Workout</mat-label>
-    <input matInput type="number" placeholder="" [formControl]="lenWorkout" required>
+    <input matInput type="number" placeholder="" formControlName="lenWorkout" required>
     <span matSuffix>(mins)</span>
-    <mat-error *ngIf="lenWorkout.invalid">{{getErrorMessage(lenWorkout)}}</mat-error>
+    <mat-error *ngIf="workoutForm.get('lenWorkout').invalid">{{getErrorMessage('lenWorkout')}}</mat-error>
   </mat-form-field>
 
-  <!--<button (click)="calculateOzLostHr()">Maths</button>-->
-  <button (click)="saveWorkout()">Save</button>
-  <!--<p>{{ozLostHr}} - ozLostHr</p>-->
+  <button type="submit">Save</button> <!-- [disabled]="!workoutForm.valid" -->
+  <span>Lost this workout (oz/Hr) = {{workoutData.data.ozLossHr}}</span>
 </form>

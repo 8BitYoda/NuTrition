@@ -13,9 +13,6 @@ import { WorkoutFormComponent } from './workout-form-container/workout-form/work
 
 const materialImports = [
   MatStepperModule,
-  BrowserAnimationsModule,
-  FormsModule,
-  ReactiveFormsModule,
   MatInputModule,
   MatFormFieldModule,
   MatIconModule,
@@ -33,6 +30,9 @@ const materialImports = [
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'serverApp'}),
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
     materialImports
   ],
   providers: [],

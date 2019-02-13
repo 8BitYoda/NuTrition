@@ -4,14 +4,21 @@ export interface IWorkoutData {
   btlsConsumed: number;
   btlSize: number;
   lenWorkout: number;
-  ozLossHr?: number;
+
+  lbsLost: number;
+  subTotalOzLost: number;
+  bottleTotalOz: number;
+  ozLossHr: number;
 }
 
 export class WorkoutData implements IWorkoutData {
-  sWeight = 0;
-  eWeight = 0;
-  btlsConsumed = 0;
-  btlSize = 0;
-  lenWorkout = 0;
-  ozLossHr = 0;
+  sWeight = null;
+  eWeight = null;
+  btlsConsumed = null;
+  btlSize = null;
+  lenWorkout = null;
+  lbsLost = null;
+  subTotalOzLost = null;
+  bottleTotalOz = null;
+  ozLossHr = null;
 }

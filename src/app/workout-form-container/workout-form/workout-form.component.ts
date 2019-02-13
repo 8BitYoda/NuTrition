@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {IWorkoutItem} from '../models/workout-item';
 
 @Component({
@@ -9,39 +9,42 @@ import {IWorkoutItem} from '../models/workout-item';
 })
 export class WorkoutFormComponent implements OnInit {
   @Output() dataChange = new EventEmitter<IWorkoutItem>();
-  @Input() data: IWorkoutItem;
-  ozLostHr = 0;
+  @Input() workoutData: IWorkoutItem;
+  workoutForm = new FormGroup({
+    sWeight: new FormControl('', [Validators.required, Validators.min(0)]),
+    eWeight: new FormControl('', [Validators.required, Validators.min(0)]),
+    btlsConsumed: new FormControl('', [Validators.required, Validators.min(0)]),
+    btlSize: new FormControl('', [Validators.required, Validators.min(0)]),
+    lenWorkout: new FormControl('', [Validators.required, Validators.min(0)])
+  });
 
-  // Fields
-  sWeight = new FormControl('', [Validators.required, Validators.min(0)]);
-  eWeight = new FormControl('', [Validators.required, Validators.min(0)]);
-  btlsConsumed = new FormControl('', [Validators.required, Validators.min(0)]);
-  btlSize = new FormControl('', [Validators.required, Validators.min(0)]);
-  lenWorkout = new FormControl('', [Validators.required, Validators.min(0)]);
+  constructor() {}
 
-  constructor() {
-  }
-
-  ngOnInit() {
-    console.log(this.data.id, 'data');
-  }
+  ngOnInit() {}
 
   getErrorMessage(fieldName) {
-    return fieldName.hasError('required') ? 'You must enter a value' :
-      fieldName.hasError('min') ? 'Your entry must be greater then 0' :
+    return this.workoutForm.get(fieldName).hasError('required') ? 'You must enter a value' :
+      this.workoutForm.get(fieldName).hasError('min') ? 'Your entry must be greater then 0' :
         '';
   }
 
   saveWorkout() {
-    this.data.data.sWeight = this.sWeight.value;
-    this.data.data.eWeight = this.eWeight.value;
-    this.data.data.btlsConsumed = this.btlsConsumed.value;
-    this.data.data.btlSize = this.btlSize.value;
-    this.data.data.lenWorkout = this.lenWorkout.value;
+    if (this.workoutForm.valid) {
+      // Set Values
+      this.workoutData.data.sWeight = this.workoutForm.get('sWeight').value;
+      this.workoutData.data.eWeight = this.workoutForm.get('eWeight').value;
+      this.workoutData.data.btlsConsumed = this.workoutForm.get('btlsConsumed').value;
+      this.workoutData.data.btlSize = this.workoutForm.get('btlSize').value;
+      this.workoutData.data.lenWorkout = this.workoutForm.get('lenWorkout').value;
 
-    this.data.data.ozLossHr = (((this.sWeight.value - this.eWeight.value) * 15.34) +
-        (this.btlsConsumed.value * this.btlSize.value)) / this.lenWorkout.value;
+      // Calculations
+      this.workoutData.data.lbsLost = this.workoutForm.get('sWeight').value - this.workoutForm.get('eWeight').value;
+      this.workoutData.data.subTotalOzLost = this.workoutData.data.lbsLost * 15.34;
+      this.workoutData.data.bottleTotalOz = this.workoutForm.get('btlsConsumed').value * this.workoutForm.get('btlSize').value;
+      this.workoutData.data.ozLossHr = (this.workoutData.data.subTotalOzLost + this.workoutData.data.bottleTotalOz) /
+        (this.workoutData.data.lenWorkout / 60);
 
-    this.dataChange.emit(this.data);
+      this.dataChange.emit(this.workoutData);
+    }
   }
 }
