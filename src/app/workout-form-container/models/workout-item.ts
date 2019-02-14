@@ -1,15 +1,15 @@
 import {IWorkoutData, WorkoutData} from './workout-data';
 
 export interface IWorkoutItem {
-  id: number;
+  id: string;
   data: IWorkoutData;
 }
 
 export class WorkoutItem implements IWorkoutItem {
-  id: number = null;
+  id: string = null;
   data: IWorkoutData = null;
 
-  constructor(id: number) {
+  constructor(id: string) {
     this.id = id;
     this.data = new WorkoutData();
   }

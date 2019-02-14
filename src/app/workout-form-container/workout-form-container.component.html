@@ -1,6 +1,19 @@
-<mat-tab-group>
-  <mat-tab *ngFor="let tab of tabs" label="Workout {{tab.id}}">
+<mat-tab-group [selectedIndex]="currentTab">
+  <mat-tab *ngFor="let tab of tabs; let index = index" label="{{tab.id}}">
+    <ng-template mat-tab-label>
+      <span>{{tab.id}}</span><!--TODO allow user to edit tab name-->
+      <button mat-icon-button (click)="removeTab(index)" [hidden]="index <= 1">
+        <mat-icon>clear</mat-icon>
+      </button>
+    </ng-template>
     <app-workout-form [workoutData]="tab" (dataChange)="calculateAverageLoss()"></app-workout-form>
+  </mat-tab>
+  <mat-tab disabled>
+    <ng-template mat-tab-label>
+      <button mat-icon-button (click)="addTab()">
+        <mat-icon>add_circle</mat-icon>
+      </button>
+    </ng-template>
   </mat-tab>
 </mat-tab-group>
 <h3>Total Lost oz/Hr - {{totalLostHr}}</h3>
