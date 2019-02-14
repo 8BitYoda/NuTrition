@@ -5,11 +5,19 @@ import {AppComponent} from './app.component';
 import {FooterComponent} from './footer/footer.component';
 import {StepperContainerComponent} from './stepper-container/stepper-container.component';
 
-import {MatStepperModule, MatInputModule, MatFormFieldModule, MatIconModule, MatTabsModule, MatCardModule} from '@angular/material';
+import {
+  MatStepperModule,
+  MatInputModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatTabsModule,
+  MatCardModule,
+  MatDividerModule
+} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { WorkoutFormContainerComponent } from './workout-form-container/workout-form-container.component';
-import { WorkoutFormComponent } from './workout-form-container/workout-form/workout-form.component';
+import {WorkoutFormContainerComponent} from './workout-form-container/workout-form-container.component';
+import {WorkoutFormComponent} from './workout-form-container/workout-form/workout-form.component';
 
 const materialImports = [
   MatStepperModule,
@@ -17,7 +25,8 @@ const materialImports = [
   MatFormFieldModule,
   MatIconModule,
   MatTabsModule,
-  MatCardModule
+  MatCardModule,
+  MatDividerModule
 ];
 
 @NgModule({

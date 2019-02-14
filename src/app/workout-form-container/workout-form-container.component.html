@@ -16,4 +16,9 @@
     </ng-template>
   </mat-tab>
 </mat-tab-group>
-<h3>Total Lost oz/Hr - {{totalLostHr}}</h3>
+<mat-divider></mat-divider>
+<h3>Average loss oz/Hr: {{avgOzLossHr | number : '1.0-2'}}</h3>
+<h5>Average sodium content per oz: 46mg</h5>
+<h3>Average sodium loss per hour: {{avgNaLossHr | number : '1.0-2'}}</h3>
+<h3>Athlete goal fluid replacement rate/Hr: {{fluidReplacementGoal | number : '1.0-2'}}</h3>
+<h3>Athlete goal sodium replacement rate/Hr: {{sodiumReplacementGoal | number : '1.0-2'}}</h3>

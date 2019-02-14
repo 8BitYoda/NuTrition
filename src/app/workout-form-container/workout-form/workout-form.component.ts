@@ -18,9 +18,11 @@ export class WorkoutFormComponent implements OnInit {
     lenWorkout: new FormControl('', [Validators.required, Validators.min(0)])
   });
 
-  constructor() {}
+  constructor() {
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   getErrorMessage(fieldName) {
     return this.workoutForm.get(fieldName).hasError('required') ? 'You must enter a value' :
@@ -41,8 +43,12 @@ export class WorkoutFormComponent implements OnInit {
       this.workoutData.data.lbsLost = this.workoutForm.get('sWeight').value - this.workoutForm.get('eWeight').value;
       this.workoutData.data.subTotalOzLost = this.workoutData.data.lbsLost * 15.34;
       this.workoutData.data.bottleTotalOz = this.workoutForm.get('btlsConsumed').value * this.workoutForm.get('btlSize').value;
-      this.workoutData.data.ozLossHr = (this.workoutData.data.subTotalOzLost + this.workoutData.data.bottleTotalOz) /
-        (this.workoutData.data.lenWorkout / 60);
+      this.workoutData.data.ozLossHr = ((this.workoutData.data.subTotalOzLost + this.workoutData.data.bottleTotalOz) /
+        (this.workoutData.data.lenWorkout / 60));
+
+      if (this.workoutData.type === 'run') {
+        this.workoutData.data.ozLossHr = this.workoutData.data.ozLossHr + 30;
+      }
 
       this.dataChange.emit(this.workoutData);
     }
