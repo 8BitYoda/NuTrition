@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-stepper-container',
   templateUrl: './stepper-container.component.html',
-  styleUrls: ['./stepper-container.component.css']
+  styleUrls: ['./stepper-container.component.less']
 })
 export class StepperContainerComponent implements OnInit {
 

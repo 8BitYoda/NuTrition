@@ -1,11 +1,9 @@
 <mat-horizontal-stepper linear #stepper>
   <mat-step label="Run"> <!--[stepControl]="runForm"-->
-    <mat-card>
-      <app-workout-form-container workoutType="run"></app-workout-form-container>
-      <div>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </mat-card>
+    <app-workout-form-container workoutType="run"></app-workout-form-container>
+    <div>
+      <button mat-button matStepperNext>Next</button>
+    </div>
   </mat-step>
   <mat-step label="Bike">
     <app-workout-form-container workoutType="bike"></app-workout-form-container>

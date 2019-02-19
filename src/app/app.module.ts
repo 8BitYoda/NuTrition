@@ -12,7 +12,8 @@ import {
   MatIconModule,
   MatTabsModule,
   MatCardModule,
-  MatDividerModule
+  MatDividerModule,
+  MatSliderModule
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -26,7 +27,8 @@ const materialImports = [
   MatIconModule,
   MatTabsModule,
   MatCardModule,
-  MatDividerModule
+  MatDividerModule,
+  MatSliderModule
 ];
 
 @NgModule({
