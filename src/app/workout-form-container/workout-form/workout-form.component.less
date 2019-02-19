@@ -1,7 +1,22 @@
-div {
+.form-container {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
 
+  .col1 {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  .col2 {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+}
+
+.workout-entry {
   margin: 5px 0;
 
   .text {
@@ -13,5 +28,23 @@ div {
 
   .mat-form-field {
     width: 200px;
+    max-width: 300px;
+    margin-left: 38px;
+  }
+}
+
+.workout-results {
+  font-family: 'Josefin Sans', sans-serif;
+  color: #737373;
+  font-weight: bold;
+  font-size: 15pt;
+  text-align: center;
+
+  p {
+    font-size: 30pt;
+    color: black;
+
+    margin-top: 5px;
+    margin-bottom: 10px;
   }
 }

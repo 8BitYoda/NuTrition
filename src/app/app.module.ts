@@ -13,7 +13,7 @@ import {
   MatTabsModule,
   MatCardModule,
   MatDividerModule,
-  MatSliderModule
+  MatButtonModule
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -28,7 +28,7 @@ const materialImports = [
   MatTabsModule,
   MatCardModule,
   MatDividerModule,
-  MatSliderModule
+  MatButtonModule
 ];
 
 @NgModule({
