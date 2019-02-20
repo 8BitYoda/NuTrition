@@ -6,7 +6,9 @@
         <mat-icon>clear</mat-icon>
       </button>
     </ng-template>
-    <app-workout-form [workoutData]="tab" (dataChange)="calculateAverageLoss()"></app-workout-form>
+    <app-workout-form [workoutData]="tab"
+                      (dataChange)="calculateAverageLoss()"
+                      (formValidity)="checkStepValidity($event, index)"></app-workout-form>
   </mat-tab>
   <mat-tab disabled>
     <ng-template mat-tab-label>

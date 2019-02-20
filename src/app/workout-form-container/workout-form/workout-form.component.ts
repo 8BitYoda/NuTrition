@@ -14,6 +14,7 @@ export class WorkoutFormComponent implements OnInit {
 
   @Output() dataChange = new EventEmitter<IWorkoutItem>();
   @Input() workoutData: IWorkoutItem;
+  @Output() formValidity = new EventEmitter();
 
   workoutForm: FormGroup;
 
@@ -149,6 +150,7 @@ export class WorkoutFormComponent implements OnInit {
       );
 
       this.dataChange.emit(this.workoutData);
+      this.formValidity.emit(true);
     }
   }
 }

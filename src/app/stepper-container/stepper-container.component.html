@@ -1,13 +1,13 @@
 <div class="header-text"><p class="title">NuTRItion</p></div>
-<mat-horizontal-stepper linear #stepper>
-  <mat-step label="Run"> <!--[stepControl]="runForm"-->
-    <app-workout-form-container workoutType="run"></app-workout-form-container>
+<mat-horizontal-stepper linear labelPosition="bottom" #stepper>
+  <mat-step label="Run" [completed]=runForms>
+    <app-workout-form-container workoutType="run" (stepValidity)="runForms = $event"></app-workout-form-container>
     <div>
       <button mat-button matStepperNext>Next</button>
     </div>
   </mat-step>
-  <mat-step label="Bike">
-    <app-workout-form-container workoutType="bike"></app-workout-form-container>
+  <mat-step label="Bike" [completed]="bikeForms">
+    <app-workout-form-container workoutType="bike" (stepValidity)="bikeForms = $event"></app-workout-form-container>
     <div>
       <button mat-button matStepperPrevious>Back</button>
       <button mat-button matStepperNext>Next</button>

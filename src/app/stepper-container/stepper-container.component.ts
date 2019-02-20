@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-stepper-container',
@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StepperContainerComponent implements OnInit {
 
-  constructor() { }
+  runForms: boolean;
+  bikeForms: boolean;
+
+  constructor() {
+  }
 
   ngOnInit() {
+    this.runForms = false;
+    this.bikeForms = false;
   }
 
 }

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {WorkoutItem} from '../models/workout-item';
 
 @Component({
@@ -12,8 +12,12 @@ export class WorkoutFormContainerComponent implements OnInit {
   }
 
   @Input() workoutType: string;
+  @Output() stepValidity = new EventEmitter();
+
   tabs: Array<WorkoutItem> = [];
   currentTab: number;
+  tabValidities: Array<boolean>;
+  isStepValid: boolean;
 
   avgOzLossHr: number;
   avgNaLossHr: number;
@@ -31,6 +35,9 @@ export class WorkoutFormContainerComponent implements OnInit {
     this.avgNaLossHr = 0;
     this.sodiumReplacementGoal = 0;
     this.currentTab = 0;
+
+    this.tabValidities = [false, false];
+    this.isStepValid = false;
   }
 
   calculateAverageLoss() {
@@ -52,11 +59,33 @@ export class WorkoutFormContainerComponent implements OnInit {
 
   addTab() {
     this.tabs.push(new WorkoutItem('Workout ' + (this.tabs.length + 1), this.workoutType));
+    this.tabValidities.push(false);
+    this.isStepValid = false;
     this.currentTab = this.tabs.length - 1;
+    this.stepValidity.emit(false);
   }
 
   removeTab(index) {
     this.tabs.splice(index, 1);
     this.currentTab = this.tabs.length - 1;
+    this.checkStepValidity(null, index);
+  }
+
+  checkStepValidity(e, i) {
+    if (e) {
+      this.tabValidities[i] = e;
+    } else {
+      this.tabValidities.splice(i, 1);
+    }
+
+    let temp = false;
+    this.tabValidities.forEach(function (currTab) {
+      temp = currTab;
+    });
+
+    if (temp) {
+      this.isStepValid = temp;
+      this.stepValidity.emit(this.isStepValid);
+    }
   }
 }
