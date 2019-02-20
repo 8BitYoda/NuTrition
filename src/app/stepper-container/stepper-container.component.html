@@ -1,20 +1,27 @@
 <div class="header-text"><p class="title">NuTRItion</p></div>
+run: {{runForms}} :: bike: {{bikeForms}}
 <mat-horizontal-stepper linear labelPosition="bottom" #stepper>
   <mat-step label="Run" [completed]=runForms>
-    <app-workout-form-container workoutType="run" (stepValidity)="runForms = $event"></app-workout-form-container>
+    <app-workout-form-container [workoutType]="'run'"
+                                [nutritionData]="nutritionData"
+                                (sendNutritionData)="populateNutritionInfo()"
+                                (stepValidity)="runForms = $event"></app-workout-form-container>
     <div>
       <button mat-button matStepperNext>Next</button>
     </div>
   </mat-step>
   <mat-step label="Bike" [completed]="bikeForms">
-    <app-workout-form-container workoutType="bike" (stepValidity)="bikeForms = $event"></app-workout-form-container>
+    <app-workout-form-container [workoutType]="'bike'"
+                                [nutritionData]="nutritionData"
+                                (sendNutritionData)="populateNutritionInfo()"
+                                (stepValidity)="bikeForms = $event"></app-workout-form-container>
     <div>
       <button mat-button matStepperPrevious>Back</button>
       <button mat-button matStepperNext>Next</button>
     </div>
   </mat-step>
   <mat-step label="Done">
-    <app-nutrition-results></app-nutrition-results>
+    <app-nutrition-results [nutritionInfo]="nutritionItems"></app-nutrition-results>
     <div>
       <button mat-button matStepperPrevious>Back</button>
       <button mat-button (click)="stepper.reset()">Reset</button>

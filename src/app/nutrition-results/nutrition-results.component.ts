@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {NutritionItems} from '../models/nutrition-items';
 
 @Component({
   selector: 'app-nutrition-results',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NutritionResultsComponent implements OnInit {
 
-  constructor() { }
+  @Input() nutritionInfo: NutritionItems = new NutritionItems();
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
+  get runData() {
+    if (this.nutritionInfo.runData) {
+      return this.nutritionInfo.runData;
+    }
+  }
+
+  get bikeData() {
+    if (this.nutritionInfo.bikeData) {
+      return this.nutritionInfo.runData;
+    }
+  }
 }
