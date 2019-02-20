@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {IWorkoutItem} from '../../models/workout-item';
 
 @Component({
@@ -9,19 +9,13 @@ import {IWorkoutItem} from '../../models/workout-item';
 })
 export class WorkoutFormComponent implements OnInit {
 
-  constructor() {
+  constructor(private fb: FormBuilder) {
   }
 
   @Output() dataChange = new EventEmitter<IWorkoutItem>();
   @Input() workoutData: IWorkoutItem;
-  workoutForm = new FormGroup({
-    sWeight: new FormControl('', [Validators.required, Validators.min(0)]),
-    eWeight: new FormControl('', [Validators.required, Validators.min(0)]),
-    btlsConsumed: new FormControl('', [Validators.required, Validators.min(0)]),
-    btlSize: new FormControl('', [Validators.required, Validators.min(0)]),
-    lenWorkout: new FormControl('', [Validators.required, Validators.min(0)]),
-    distWorkout: new FormControl('', [Validators.required, Validators.min(0)])
-  });
+
+  workoutForm: FormGroup;
 
   // MET values retrieved from:
   // http://download.lww.com/wolterskluwer_vitalstream_com/permalink/mss/a/mss_43_8_2011_06_13_ainsworth_202093_sdc1.pdf
@@ -85,10 +79,37 @@ export class WorkoutFormComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.workoutForm = this.fb.group({
+      sWeight: ['', [Validators.required, Validators.min(0)]],
+      eWeight: ['', [Validators.required, Validators.min(0)]],
+      btlsConsumed: ['', [Validators.required, Validators.min(0)]],
+      btlSize: ['', [Validators.required, Validators.min(0)]],
+      lenWorkout: ['', [Validators.required, Validators.min(0)]],
+      distWorkout: ['', [Validators.required, Validators.min(0)]]
+    });
+  }
+
+  get sWeight() {
+    return this.workoutForm.get('sWeight');
+  }
+  get eWeight() {
+    return this.workoutForm.get('eWeight');
+  }
+  get btlsConsumed() {
+    return this.workoutForm.get('btlsConsumed');
+  }
+  get btlSize() {
+    return this.workoutForm.get('btlSize');
+  }
+  get lenWorkout() {
+    return this.workoutForm.get('lenWorkout');
+  }
+  get distWorkout() {
+    return this.workoutForm.get('distWorkout');
   }
 
   getErrorMessage(fieldName) {
-    return this.workoutForm.get(fieldName).hasError('required') ? 'You must enter a value' :
+    return this.workoutForm.get(fieldName).hasError('required') ? 'You must enter a number' :
       this.workoutForm.get(fieldName).hasError('min') ? 'Your entry must be greater then 0' :
         '';
   }

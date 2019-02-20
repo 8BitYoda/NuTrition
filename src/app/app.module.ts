@@ -16,7 +16,7 @@ import {
   MatButtonModule
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ReactiveFormsModule} from '@angular/forms';
 import {WorkoutFormContainerComponent} from './workout-form-container/workout-form-container.component';
 import {WorkoutFormComponent} from './workout-form-container/workout-form/workout-form.component';
 import { NutritionResultsComponent } from './nutrition-results/nutrition-results.component';
@@ -43,7 +43,6 @@ const materialImports = [
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'serverApp'}),
-    FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     materialImports
