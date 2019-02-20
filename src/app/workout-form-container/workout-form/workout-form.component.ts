@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {IWorkoutItem} from '../models/workout-item';
+import {IWorkoutItem} from '../../models/workout-item';
 
 @Component({
   selector: 'app-workout-form',
@@ -23,7 +23,8 @@ export class WorkoutFormComponent implements OnInit {
     distWorkout: new FormControl('', [Validators.required, Validators.min(0)])
   });
 
-  // MET values from http://download.lww.com/wolterskluwer_vitalstream_com/permalink/mss/a/mss_43_8_2011_06_13_ainsworth_202093_sdc1.pdf
+  // MET values retrieved from:
+  // http://download.lww.com/wolterskluwer_vitalstream_com/permalink/mss/a/mss_43_8_2011_06_13_ainsworth_202093_sdc1.pdf
   // https://sites.google.com/site/compendiumofphysicalactivities/references
   static calcRunMET(len: number, dist: number) {
     const pace: number = (dist / len) * 60;
