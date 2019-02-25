@@ -1,6 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {WorkoutItem} from '../models/workout-item';
-import {INutritionItems, NutritionItems} from '../models/nutrition-items';
 import {NutritionData} from '../models/nutrition-data';
 
 @Component({
@@ -52,13 +51,12 @@ export class WorkoutFormContainerComponent implements OnInit {
         i++;
         tempAvg += tab.data.ozLossHr;
       }
-      this.nutritionData.data = [];
-      this.nutritionData.data.push(tab.data);
-      this.nutritionData.type = tab.type;
+      this.nutritionData.type = this.workoutType;
     });
+
     this.nutritionData.avgOzLossHr = tempAvg / i;
-    this.nutritionData.avgNaLossHr = this.avgOzLossHr * 34;
-    this.nutritionData.fluidReplacementGoal = (((this.avgOzLossHr - 30) * 0.5) / 30) * 11 + 17;
+    this.nutritionData.avgNaLossHr = this.nutritionData.avgOzLossHr * 34;
+    this.nutritionData.fluidReplacementGoal = (((this.nutritionData.avgOzLossHr - 30) * 0.5) / 30) * 11 + 17;
     this.nutritionData.sodiumReplacementGoal = (((this.avgNaLossHr - 1000) * 0.5) / 1000) * 400 + 300;
 
     this.sendNutritionData.emit(this.nutritionData);

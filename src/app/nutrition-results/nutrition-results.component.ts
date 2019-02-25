@@ -24,7 +24,7 @@ export class NutritionResultsComponent implements OnInit {
 
   get bikeData() {
     if (this.nutritionInfo.bikeData) {
-      return this.nutritionInfo.runData;
+      return this.nutritionInfo.bikeData;
     }
   }
 }

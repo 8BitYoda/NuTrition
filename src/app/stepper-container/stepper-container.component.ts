@@ -12,12 +12,13 @@ export class StepperContainerComponent implements OnInit {
   runForms: boolean;
   bikeForms: boolean;
   nutritionData: NutritionData;
-  nutritionItems: NutritionItems = new NutritionItems();
+  nutritionItems: NutritionItems;
 
   constructor() {
   }
 
   ngOnInit() {
+    this.nutritionItems = new NutritionItems();
     this.nutritionData = new NutritionData();
     this.runForms = false;
     this.bikeForms = false;
