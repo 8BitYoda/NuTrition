@@ -10,7 +10,8 @@ import {NutritionDataService} from '../service/nutrition-data.service';
 })
 export class WorkoutFormContainerComponent implements OnInit {
 
-  constructor(private nuService: NutritionDataService) {}
+  constructor(private nuService: NutritionDataService) {
+  }
 
   @Input() workoutType: string;
   @Output() stepValidity = new EventEmitter();
@@ -34,21 +35,29 @@ export class WorkoutFormContainerComponent implements OnInit {
   }
 
   calculateAverageLoss() {
-    let tempAvg = 0;
+    let tempOzAvg = 0;
+    let tempCalAvg = 0;
     let i = 0;
     this.tabs.forEach(tab => {
       if (tab.data.ozLossHr) {
         i++;
-        tempAvg += tab.data.ozLossHr;
+        tempOzAvg += tab.data.ozLossHr;
+        tempCalAvg += (tab.data.estCaloriesBurned / (tab.data.lenWorkout / 60));
       }
     });
 
     this.nutritionData.type = this.workoutType;
-    this.nutritionData.avgOzLossHr = tempAvg / i;
+    this.nutritionData.avgOzLossHr = tempOzAvg / i;
+    this.nutritionData.avgCalLossHr = tempCalAvg / i;
     this.nutritionData.avgNaLossHr = this.nutritionData.avgOzLossHr * 34;
     this.nutritionData.fluidReplacementGoal = (((this.nutritionData.avgOzLossHr - 30) * 0.5) / 30) * 11 + 17;
     this.nutritionData.sodiumReplacementGoal = (((this.nutritionData.avgNaLossHr - 1000) * 0.5) / 1000) * 400 + 300;
 
+    if (this.workoutType === 'bike') {
+      this.nutritionData.calorieReplacementGoal = ((((this.nutritionData.avgCalLossHr - 700) * 0.5) / 100) * 40) + 240;
+    } else if (this.workoutType === 'run') {
+      this.nutritionData.calorieReplacementGoal = ((((this.nutritionData.avgCalLossHr - 700) * 0.5) / 100) * 100) + 150;
+    }
     this.nuService.setNuData(this.nutritionData);
   }
 

@@ -68,15 +68,15 @@ export class WorkoutFormComponent implements OnInit {
       return 8;
     } else if (paceMPH >= 14 && paceMPH < 16) {
       return 10;
-    } else if (paceMPH >= 16 && paceMPH < 19) {
+    } else if (paceMPH >= 16 && paceMPH <= 19) {
       return 12;
-    } else if (paceMPH >= 20 && paceMPH < 19) {
+    } else if (paceMPH > 19) {
       return 15.8;
     }
   }
 
   static calcEstCalBurned(met: number, weightLbs: number, len: number) {
-    return Math.round((weightLbs / 2.205) * met);
+    return Math.round((weightLbs / 2.205) * met) * (len / 60);
   }
 
   ngOnInit() {
@@ -93,18 +93,23 @@ export class WorkoutFormComponent implements OnInit {
   get sWeight() {
     return this.workoutForm.get('sWeight');
   }
+
   get eWeight() {
     return this.workoutForm.get('eWeight');
   }
+
   get btlsConsumed() {
     return this.workoutForm.get('btlsConsumed');
   }
+
   get btlSize() {
     return this.workoutForm.get('btlSize');
   }
+
   get lenWorkout() {
     return this.workoutForm.get('lenWorkout');
   }
+
   get distWorkout() {
     return this.workoutForm.get('distWorkout');
   }

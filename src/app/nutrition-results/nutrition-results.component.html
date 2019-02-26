@@ -3,20 +3,28 @@
     <header>Run</header>
     <div>
       <span class="label">Average loss oz/Hr:</span>
-      <span class="value">92.2{{runData.avgOzLossHr | number : '1.0-1'}}</span>
+      <span class="value">{{runData.avgOzLossHr | number : '1.0-1'}}</span>
+    </div>
+    <div>
+      <span class="label">Athlete goal fluid replacement rate/Hr:</span>
+      <span class="value">{{runData.fluidReplacementGoal | number : '1.0-1'}}</span>
     </div>
     <!--<h5>Average sodium content per oz: 46mg</h5>-->
     <div>
       <span class="label">Average sodium loss per hour: </span>
-      <span class="value">10000.0{{runData.avgNaLossHr | number : '1.0-1'}}</span>
-    </div>
-    <div>
-      <span class="label">Athlete goal fluid replacement rate/Hr:</span>
-      <span class="value">324.4{{runData.fluidReplacementGoal | number : '1.0-1'}}</span>
+      <span class="value">{{runData.avgNaLossHr | number : '1.0-1'}}</span>
     </div>
     <div>
       <span class="label">Athlete goal sodium replacement rate/Hr:</span>
-      <span class="value">22888.3{{runData.sodiumReplacementGoal | number : '1.0-1'}}</span>
+      <span class="value">{{runData.sodiumReplacementGoal | number : '1.0-1'}}</span>
+    </div>
+    <div>
+      <span class="label">Average estimated calories lost per hour: </span>
+      <span class="value">{{runData.avgCalLossHr | number : '1.0-1'}}</span>
+    </div>
+    <div>
+      <span class="label">Athlete goal calorie replacement rate/Hr:</span>
+      <span class="value">{{runData.calorieReplacementGoal | number : '1.0-1'}}</span>
     </div>
   </div>
 
@@ -24,20 +32,28 @@
     <header>Bike</header>
     <div>
       <span class="label">Average loss oz/Hr:</span>
-      <span class="value">92.2{{bikeData.avgOzLossHr | number : '1.0-1'}}</span>
+      <span class="value">{{bikeData.avgOzLossHr | number : '1.0-1'}}</span>
+    </div>
+    <div>
+      <span class="label">Athlete goal fluid replacement rate/Hr:</span>
+      <span class="value">{{bikeData.fluidReplacementGoal | number : '1.0-1'}}</span>
     </div>
     <!--<h5>Average sodium content per oz: 46mg</h5>-->
     <div>
       <span class="label">Average sodium loss per hour: </span>
-      <span class="value">100.0{{bikeData.avgNaLossHr | number : '1.0-1'}}</span>
-    </div>
-    <div>
-      <span class="label">Athlete goal fluid replacement rate/Hr:</span>
-      <span class="value">324.4{{bikeData.fluidReplacementGoal | number : '1.0-1'}}</span>
+      <span class="value">{{bikeData.avgNaLossHr | number : '1.0-1'}}</span>
     </div>
     <div>
       <span class="label">Athlete goal sodium replacement rate/Hr:</span>
-      <span class="value">22.3{{bikeData.sodiumReplacementGoal | number : '1.0-1'}}</span>
+      <span class="value">{{bikeData.sodiumReplacementGoal | number : '1.0-1'}}</span>
+    </div>
+    <div>
+      <span class="label">Average estimated calories lost per hour: </span>
+      <span class="value">{{bikeData.avgCalLossHr | number : '1.0-1'}}</span>
+    </div>
+    <div>
+      <span class="label">Athlete goal calorie replacement rate/Hr:</span>
+      <span class="value">{{bikeData.calorieReplacementGoal | number : '1.0-1'}}</span>
     </div>
   </div>
 </div>

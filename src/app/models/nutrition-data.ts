@@ -7,6 +7,8 @@ export interface INutritionData {
   fluidReplacementGoal: number;
   avgNaLossHr: number;
   sodiumReplacementGoal: number;
+  avgCalLossHr: number;
+  calorieReplacementGoal: number;
 }
 
 export class NutritionData implements INutritionData {
@@ -15,6 +17,8 @@ export class NutritionData implements INutritionData {
   fluidReplacementGoal: number;
   avgNaLossHr: number;
   sodiumReplacementGoal: number;
+  avgCalLossHr: number;
+  calorieReplacementGoal: number;
 
   constructor() {
     this.type = null;
@@ -22,5 +26,7 @@ export class NutritionData implements INutritionData {
     this.avgNaLossHr = null;
     this.fluidReplacementGoal = null;
     this.sodiumReplacementGoal = null;
+    this.avgCalLossHr = null;
+    this.calorieReplacementGoal = null;
   }
 }
