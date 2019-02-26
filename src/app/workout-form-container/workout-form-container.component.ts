@@ -10,8 +10,7 @@ import {NutritionDataService} from '../service/nutrition-data.service';
 })
 export class WorkoutFormContainerComponent implements OnInit {
 
-  constructor(private nuService: NutritionDataService) {
-  }
+  constructor(private nuService: NutritionDataService) {}
 
   @Input() workoutType: string;
   @Output() stepValidity = new EventEmitter();
@@ -20,12 +19,6 @@ export class WorkoutFormContainerComponent implements OnInit {
   currentTab: number;
   tabValidities: Array<boolean>;
   isStepValid: boolean;
-
-  avgOzLossHr: number;
-  avgNaLossHr: number;
-
-  fluidReplacementGoal: number;
-  sodiumReplacementGoal: number;
   nutritionData: NutritionData;
 
   ngOnInit() {
@@ -33,10 +26,6 @@ export class WorkoutFormContainerComponent implements OnInit {
       new WorkoutItem('Workout 1', this.workoutType),
       new WorkoutItem('Workout 2', this.workoutType)
     );
-    this.avgOzLossHr = 0;
-    this.fluidReplacementGoal = 0;
-    this.avgNaLossHr = 0;
-    this.sodiumReplacementGoal = 0;
     this.currentTab = 0;
 
     this.tabValidities = [false, false];
@@ -58,7 +47,7 @@ export class WorkoutFormContainerComponent implements OnInit {
     this.nutritionData.avgOzLossHr = tempAvg / i;
     this.nutritionData.avgNaLossHr = this.nutritionData.avgOzLossHr * 34;
     this.nutritionData.fluidReplacementGoal = (((this.nutritionData.avgOzLossHr - 30) * 0.5) / 30) * 11 + 17;
-    this.nutritionData.sodiumReplacementGoal = (((this.avgNaLossHr - 1000) * 0.5) / 1000) * 400 + 300;
+    this.nutritionData.sodiumReplacementGoal = (((this.nutritionData.avgNaLossHr - 1000) * 0.5) / 1000) * 400 + 300;
 
     this.nuService.setNuData(this.nutritionData);
   }
