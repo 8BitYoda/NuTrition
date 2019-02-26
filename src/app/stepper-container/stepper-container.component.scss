@@ -25,6 +25,15 @@
   }
 }
 
+.stepper-navigation {
+  float: right;
+  margin-top: 8px;
+
+  button {
+    width: 125px;
+  }
+}
+
 /deep/ .mat-step-header .mat-step-icon:not(.mat-step-icon-selected) {
   background-color: rgba(0, 0, 0, 0.24) ;
 }
