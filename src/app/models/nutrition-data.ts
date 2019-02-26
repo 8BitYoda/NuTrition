@@ -2,7 +2,7 @@ import {IWorkoutData} from './workout-data';
 
 export interface INutritionData {
   type: string;
-  data: Array<IWorkoutData>;
+  data?: Array<IWorkoutData>;
   avgOzLossHr: number;
   fluidReplacementGoal: number;
   avgNaLossHr: number;
@@ -11,7 +11,6 @@ export interface INutritionData {
 
 export class NutritionData implements INutritionData {
   type: string;
-  data: Array<IWorkoutData>;
   avgOzLossHr: number;
   fluidReplacementGoal: number;
   avgNaLossHr: number;
@@ -19,7 +18,6 @@ export class NutritionData implements INutritionData {
 
   constructor() {
     this.type = null;
-    this.data = [];
     this.avgOzLossHr = null;
     this.avgNaLossHr = null;
     this.fluidReplacementGoal = null;

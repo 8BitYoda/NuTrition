@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {WorkoutItem} from '../models/workout-item';
 import {NutritionData} from '../models/nutrition-data';
+import {NutritionDataService} from '../service/nutrition-data.service';
 
 @Component({
   selector: 'app-workout-form-container',
@@ -9,13 +10,11 @@ import {NutritionData} from '../models/nutrition-data';
 })
 export class WorkoutFormContainerComponent implements OnInit {
 
-  constructor() {
+  constructor(private nuService: NutritionDataService) {
   }
 
   @Input() workoutType: string;
-  @Input() nutritionData: NutritionData;
   @Output() stepValidity = new EventEmitter();
-  @Output() sendNutritionData = new EventEmitter<NutritionData>();
 
   tabs: Array<WorkoutItem> = [];
   currentTab: number;
@@ -27,6 +26,7 @@ export class WorkoutFormContainerComponent implements OnInit {
 
   fluidReplacementGoal: number;
   sodiumReplacementGoal: number;
+  nutritionData: NutritionData;
 
   ngOnInit() {
     this.tabs.push(
@@ -41,6 +41,7 @@ export class WorkoutFormContainerComponent implements OnInit {
 
     this.tabValidities = [false, false];
     this.isStepValid = false;
+    this.nutritionData = new NutritionData();
   }
 
   calculateAverageLoss() {
@@ -51,15 +52,15 @@ export class WorkoutFormContainerComponent implements OnInit {
         i++;
         tempAvg += tab.data.ozLossHr;
       }
-      this.nutritionData.type = this.workoutType;
     });
 
+    this.nutritionData.type = this.workoutType;
     this.nutritionData.avgOzLossHr = tempAvg / i;
     this.nutritionData.avgNaLossHr = this.nutritionData.avgOzLossHr * 34;
     this.nutritionData.fluidReplacementGoal = (((this.nutritionData.avgOzLossHr - 30) * 0.5) / 30) * 11 + 17;
     this.nutritionData.sodiumReplacementGoal = (((this.avgNaLossHr - 1000) * 0.5) / 1000) * 400 + 300;
 
-    this.sendNutritionData.emit(this.nutritionData);
+    this.nuService.setNuData(this.nutritionData);
   }
 
   addTab() {

@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NutritionItems} from '../models/nutrition-items';
+import {NutritionDataService} from '../service/nutrition-data.service';
 
 @Component({
   selector: 'app-nutrition-results',
@@ -8,12 +9,14 @@ import {NutritionItems} from '../models/nutrition-items';
 })
 export class NutritionResultsComponent implements OnInit {
 
-  @Input() nutritionInfo: NutritionItems = new NutritionItems();
+  nutritionInfo: NutritionItems = new NutritionItems();
 
-  constructor() {
+  constructor(private nuService: NutritionDataService) {
   }
 
   ngOnInit() {
+    this.nutritionInfo = this.nuService.getNuData();
+
   }
 
   get runData() {
