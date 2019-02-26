@@ -5,7 +5,7 @@ import {IWorkoutItem} from '../../models/workout-item';
 @Component({
   selector: 'app-workout-form',
   templateUrl: './workout-form.component.html',
-  styleUrls: ['./workout-form.component.less']
+  styleUrls: ['./workout-form.component.scss']
 })
 export class WorkoutFormComponent implements OnInit {
 

@@ -5,7 +5,7 @@ import {NutritionDataService} from '../service/nutrition-data.service';
 @Component({
   selector: 'app-nutrition-results',
   templateUrl: './nutrition-results.component.html',
-  styleUrls: ['./nutrition-results.component.css']
+  styleUrls: ['./nutrition-results.component.scss']
 })
 export class NutritionResultsComponent implements OnInit {
 

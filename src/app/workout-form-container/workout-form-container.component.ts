@@ -6,7 +6,7 @@ import {NutritionDataService} from '../service/nutrition-data.service';
 @Component({
   selector: 'app-workout-form-container',
   templateUrl: './workout-form-container.component.html',
-  styleUrls: ['./workout-form-container.component.less']
+  styleUrls: ['./workout-form-container.component.scss']
 })
 export class WorkoutFormContainerComponent implements OnInit {
 

@@ -1,11 +1,11 @@
-.header-text{
+.header-text {
   display: flex;
   flex-direction: column;
   align-items: center;
 
   margin-top: 4%;
 
-  .title{
+  .title {
     font-family: 'Josefin Sans', sans-serif;
     font-weight: bold;
     font-size: 2em;
@@ -17,10 +17,14 @@
     margin-bottom: 15px;
   }
 
-  .subtitle{
+  .subtitle {
     font-weight: 500;
     font-size: 2em;
 
     margin-top: 0;
   }
+}
+
+/deep/ .mat-step-header .mat-step-icon:not(.mat-step-icon-selected) {
+  background-color: rgba(0, 0, 0, 0.24) ;
 }
