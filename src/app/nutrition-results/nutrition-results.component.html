@@ -1,14 +1,43 @@
+<div class="results-container">
+  <div class="result-item">
+    <header>Run</header>
+    <div>
+      <span class="label">Average loss oz/Hr:</span>
+      <span class="value">92.2{{runData.avgOzLossHr | number : '1.0-1'}}</span>
+    </div>
+    <!--<h5>Average sodium content per oz: 46mg</h5>-->
+    <div>
+      <span class="label">Average sodium loss per hour: </span>
+      <span class="value">10000.0{{runData.avgNaLossHr | number : '1.0-1'}}</span>
+    </div>
+    <div>
+      <span class="label">Athlete goal fluid replacement rate/Hr:</span>
+      <span class="value">324.4{{runData.fluidReplacementGoal | number : '1.0-1'}}</span>
+    </div>
+    <div>
+      <span class="label">Athlete goal sodium replacement rate/Hr:</span>
+      <span class="value">22888.3{{runData.sodiumReplacementGoal | number : '1.0-1'}}</span>
+    </div>
+  </div>
 
-<h2>Run</h2>
-<h3>Average loss oz/Hr: {{runData.avgOzLossHr | number : '1.0-2'}}</h3>
-<h5>Average sodium content per oz: 46mg</h5>
-<h3>Average sodium loss per hour: {{runData.avgNaLossHr | number : '1.0-2'}}</h3>
-<h3>Athlete goal fluid replacement rate/Hr: {{runData.fluidReplacementGoal | number : '1.0-2'}}</h3>
-<h3>Athlete goal sodium replacement rate/Hr: {{runData.sodiumReplacementGoal | number : '1.0-2'}}</h3>
-
-<h2>Bike</h2>
-<h3>Average loss oz/Hr: {{bikeData.avgOzLossHr | number : '1.0-2'}}</h3>
-<h5>Average sodium content per oz: 46mg</h5>
-<h3>Average sodium loss per hour: {{bikeData.avgNaLossHr | number : '1.0-2'}}</h3>
-<h3>Athlete goal fluid replacement rate/Hr: {{bikeData.fluidReplacementGoal | number : '1.0-2'}}</h3>
-<h3>Athlete goal sodium replacement rate/Hr: {{bikeData.sodiumReplacementGoal | number : '1.0-2'}}</h3>
+  <div class="result-item">
+    <header>Bike</header>
+    <div>
+      <span class="label">Average loss oz/Hr:</span>
+      <span class="value">92.2{{bikeData.avgOzLossHr | number : '1.0-1'}}</span>
+    </div>
+    <!--<h5>Average sodium content per oz: 46mg</h5>-->
+    <div>
+      <span class="label">Average sodium loss per hour: </span>
+      <span class="value">100.0{{bikeData.avgNaLossHr | number : '1.0-1'}}</span>
+    </div>
+    <div>
+      <span class="label">Athlete goal fluid replacement rate/Hr:</span>
+      <span class="value">324.4{{bikeData.fluidReplacementGoal | number : '1.0-1'}}</span>
+    </div>
+    <div>
+      <span class="label">Athlete goal sodium replacement rate/Hr:</span>
+      <span class="value">22.3{{bikeData.sodiumReplacementGoal | number : '1.0-1'}}</span>
+    </div>
+  </div>
+</div>

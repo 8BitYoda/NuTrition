@@ -1,0 +1,49 @@
+@import "~src/app/colors";
+
+.results-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+
+  .result-item {
+    width: 90%;
+
+    @media only screen and (min-width: 770px) {
+      width: 45%;
+    }
+
+    header {
+      font-weight: bold;
+      font-size: 1.5em;
+      width: 100%;
+      border-bottom: 1px solid $secondary-lt;
+      margin-bottom: 15px;
+    }
+
+    div {
+      display: flex;
+      align-items: baseline;
+      flex-direction: column;
+      margin: 5px;
+
+      @media only screen and (min-width: 600px) {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      .label {
+        order: -1;
+        color: $secondary;
+      }
+
+      .value {
+        order: 1;
+        font-size: 2em;
+        font-weight: bold;
+        font-family: 'Josefin Sans', sans-serif;
+        color: $primary;
+      }
+    }
+  }
+}
