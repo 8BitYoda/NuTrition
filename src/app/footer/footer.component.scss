@@ -14,19 +14,19 @@ footer{
     align-self: center;
     display: flex;
     align-items: flex-end;
-  }
-}
 
-img{
-  height: 25px;
-}
+    img{
+      height: 25px;
+    }
 
-a{
-  font-family: 'Josefin Sans', sans-serif;
-  padding-left: 4px;
-  text-decoration: none;
+    a{
+      font-family: 'Josefin Sans', sans-serif;
+      padding-left: 4px;
+      text-decoration: none;
 
-  &:visited{
-    color: black;
+      &:visited{
+        color: black;
+      }
+    }
   }
 }

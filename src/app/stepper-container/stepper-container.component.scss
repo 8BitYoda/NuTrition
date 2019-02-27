@@ -1,3 +1,8 @@
+.body {
+  height: calc(100vh - 58px);
+  overflow-x: scroll;
+}
+
 .header-text {
   display: flex;
   flex-direction: column;
@@ -35,5 +40,9 @@
 }
 
 /deep/ .mat-step-header .mat-step-icon:not(.mat-step-icon-selected) {
-  background-color: rgba(0, 0, 0, 0.24) ;
+  background-color: rgba(0, 0, 0, 0.24);
+}
+
+/deep/ .mat-horizontal-stepper-header {
+  pointer-events: none;
 }

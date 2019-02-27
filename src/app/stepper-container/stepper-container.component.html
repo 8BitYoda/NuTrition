@@ -1,25 +1,27 @@
-<div class="header-text"><p class="title">NuTRItion</p></div>
-<mat-horizontal-stepper linear labelPosition="bottom" #stepper>
-  <mat-step label="Run" [completed]=runForms>
-    <app-workout-form-container [workoutType]="'run'"
-                                (stepValidity)="runForms = $event"></app-workout-form-container>
-    <div class="stepper-navigation">
-      <button mat-button matStepperNext [disabled]="!runForms">Next</button>
-    </div>
-  </mat-step>
-  <mat-step label="Bike" [completed]="bikeForms">
-    <app-workout-form-container [workoutType]="'bike'"
-                                (stepValidity)="bikeForms = $event"></app-workout-form-container>
-    <div class="stepper-navigation">
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button matStepperNext [disabled]="!bikeForms">Next</button>
-    </div>
-  </mat-step>
-  <mat-step label="Done">
-    <app-nutrition-results></app-nutrition-results>
-    <div class="stepper-navigation">
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button> <!-- TODO confirmation modal -->
-    </div>
-  </mat-step>
-</mat-horizontal-stepper>
+<div class="body">
+  <div class="header-text"><p class="title">NuTRItion</p></div>
+  <mat-horizontal-stepper linear labelPosition="bottom" #stepper>
+    <mat-step label="Run" [completed]=runForms>
+      <app-workout-form-container [workoutType]="'run'"
+                                  (stepValidity)="runForms = $event"></app-workout-form-container>
+      <div class="stepper-navigation">
+        <button mat-button matStepperNext [disabled]="!runForms">Next</button>
+      </div>
+    </mat-step>
+    <mat-step label="Bike" [completed]="bikeForms">
+      <app-workout-form-container [workoutType]="'bike'"
+                                  (stepValidity)="bikeForms = $event"></app-workout-form-container>
+      <div class="stepper-navigation">
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext [disabled]="!bikeForms">Next</button>
+      </div>
+    </mat-step>
+    <mat-step label="Done">
+      <app-nutrition-results></app-nutrition-results>
+      <div class="stepper-navigation">
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button> <!-- TODO confirmation modal -->
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>
