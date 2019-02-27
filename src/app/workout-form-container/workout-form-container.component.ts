@@ -1,7 +1,8 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {WorkoutItem} from '../models/workout-item';
 import {NutritionData} from '../models/nutrition-data';
 import {NutritionDataService} from '../service/nutrition-data.service';
+import {WorkoutFormComponent} from './workout-form/workout-form.component';
 
 @Component({
   selector: 'app-workout-form-container',
@@ -13,6 +14,7 @@ export class WorkoutFormContainerComponent implements OnInit {
   constructor(private nuService: NutritionDataService) {
   }
 
+  @ViewChild(WorkoutFormComponent) formComp: WorkoutFormComponent;
   @Input() workoutType: string;
   @Output() stepValidity = new EventEmitter();
 
@@ -82,9 +84,11 @@ export class WorkoutFormContainerComponent implements OnInit {
       this.tabValidities.splice(i, 1);
     }
 
-    let temp = false;
+    let temp = true;
     this.tabValidities.forEach(function (currTab) {
-      temp = currTab;
+      if (!currTab) {
+        temp = false;
+      }
     });
 
     if (temp) {

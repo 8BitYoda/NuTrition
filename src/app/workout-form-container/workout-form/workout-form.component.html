@@ -49,11 +49,13 @@
     <div class="col2">
       <div class="workout-results">
         Lost this workout (oz/Hr) <br/>
-        <p>{{workoutData.data.ozLossHr ? workoutData.data.ozLossHr : '---'}}</p>
+        <p *ngIf="workoutData.data.ozLossHr">{{workoutData.data.ozLossHr | number : '1.0-1'}}</p>
+        <p *ngIf="!workoutData.data.ozLossHr">---</p>
       </div>
       <div class="workout-results">
         Estimated Calories burned this workout <br/>
-        <p>{{workoutData.data.estCaloriesBurned ? workoutData.data.estCaloriesBurned : '---'}}</p>
+        <p *ngIf="workoutData.data.estCaloriesBurned">{{workoutData.data.estCaloriesBurned | number : '1.0-1'}}</p>
+        <p *ngIf="!workoutData.data.estCaloriesBurned">---</p>
       </div>
 
       <button mat-raised-button type="submit">Save</button>
