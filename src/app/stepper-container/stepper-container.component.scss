@@ -47,3 +47,7 @@
 /deep/ .mat-horizontal-stepper-header {
   pointer-events: none;
 }
+
+/deep/ .mat-horizontal-content-container {
+  padding: 0 24px 5px 24px !important;
+}

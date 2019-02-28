@@ -1,32 +1,31 @@
-footer{
-  position:fixed;
-  left:0;
-  bottom:0;
-  height:50px;
-  width:100%;
+footer {
+  position: fixed;
+  height: 51px;
+  width: 100%;
   background: #cbcbcb;
-  z-index: 999;
+  margin: 0 -8px;
 
   display: flex;
   justify-content: center;
 
-  div{
+  a {
+    font-family: 'Josefin Sans', sans-serif;
+    padding-left: 4px;
+    text-decoration: none;
     align-self: center;
     display: flex;
     align-items: flex-end;
 
-    img{
-      height: 25px;
+    &:visited {
+      color: black;
     }
 
-    a{
-      font-family: 'Josefin Sans', sans-serif;
-      padding-left: 4px;
-      text-decoration: none;
+    span {
+      padding-left: 10px;
+    }
 
-      &:visited{
-        color: black;
-      }
+    img {
+      height: 25px;
     }
   }
 }
