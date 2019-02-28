@@ -1,9 +1,9 @@
 footer {
   position: fixed;
   height: 51px;
-  width: 100%;
+  width: 100vw;
   background: #cbcbcb;
-  margin: 0 -8px;
+  bottom: 0;
 
   display: flex;
   justify-content: center;
@@ -15,6 +15,8 @@ footer {
     align-self: center;
     display: flex;
     align-items: flex-end;
+
+    color: inherit;
 
     &:visited {
       color: black;
