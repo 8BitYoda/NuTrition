@@ -1,5 +1,5 @@
-footer {
-  position: fixed;
+div {
+  //position: fixed;
   height: 51px;
   width: 100vw;
   background: #cbcbcb;
@@ -8,6 +8,10 @@ footer {
 
   display: flex;
   justify-content: center;
+
+  @media only screen and (min-width: 768px) {
+    position: fixed;
+  }
 
   a {
     font-family: 'Josefin Sans', sans-serif;
