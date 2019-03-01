@@ -19,6 +19,7 @@ export class WorkoutFormContainerComponent implements OnInit {
   @Output() stepValidity = new EventEmitter();
 
   tabs: Array<WorkoutItem> = [];
+  lenTabs: number;
   currentTab: number;
   tabValidities: Array<boolean>;
   isStepValid: boolean;
@@ -30,6 +31,7 @@ export class WorkoutFormContainerComponent implements OnInit {
       new WorkoutItem('Workout 2', this.workoutType)
     );
     this.currentTab = 0;
+    this.lenTabs = 2;
 
     this.tabValidities = [false, false];
     this.isStepValid = false;
@@ -68,12 +70,14 @@ export class WorkoutFormContainerComponent implements OnInit {
     this.tabValidities.push(false);
     this.isStepValid = false;
     this.currentTab = this.tabs.length - 1;
+    this.lenTabs += 1;
     this.stepValidity.emit(false);
   }
 
   removeTab(index) {
     this.tabs.splice(index, 1);
     this.currentTab = this.tabs.length - 1;
+    this.lenTabs -= 1;
     this.checkStepValidity(null, index);
   }
 

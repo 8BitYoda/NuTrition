@@ -21,6 +21,7 @@ import {
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ReactiveFormsModule} from '@angular/forms';
+import { SwipeTabDirective } from './directives/swipe-tab.directive';
 
 const materialImports = [
   MatStepperModule,
@@ -40,7 +41,8 @@ const materialImports = [
     StepperContainerComponent,
     WorkoutFormContainerComponent,
     WorkoutFormComponent,
-    NutritionResultsComponent
+    NutritionResultsComponent,
+    SwipeTabDirective,
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'serverApp'}),
